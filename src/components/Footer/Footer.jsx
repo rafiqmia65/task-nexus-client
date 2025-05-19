@@ -10,7 +10,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-900 mt-50 text-gray-300 py-10">
+    <div className="bg-gray-900 text-gray-300 py-10">
       <div className="container px-3 lg:px-0 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
 
         <div className="flex gap-2 flex-col">
@@ -52,7 +52,6 @@ const Footer = () => {
             <a
               href="https://facebook.com"
               target="_blank"
-              rel="noopener noreferrer"
               className="hover:text-white"
             >
               <FaFacebookF size={20} />
@@ -60,7 +59,6 @@ const Footer = () => {
             <a
               href="https://twitter.com"
               target="_blank"
-              rel="noopener noreferrer"
               className="hover:text-white"
             >
               <FaTwitter size={20} />
@@ -68,7 +66,6 @@ const Footer = () => {
             <a
               href="https://linkedin.com"
               target="_blank"
-              rel="noopener noreferrer"
               className="hover:text-white"
             >
               <FaLinkedinIn size={20} />
@@ -76,7 +73,6 @@ const Footer = () => {
             <a
               href="https://instagram.com"
               target="_blank"
-              rel="noopener noreferrer"
               className="hover:text-white"
             >
               <FaInstagram size={20} />
