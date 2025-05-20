@@ -9,6 +9,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import PrivateRoutes from "../privateRoutes/PrivateRoutes";
 import Loading from "../components/Loading/Loading";
+import TaskDetails from "../components/TaskDetails/TaskDetails";
 
 export const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ export const router = createBrowserRouter([
       {
         path: "task/:id",
         loader: ({params}) => fetch(`http://localhost:3000/allTasks/${params.id}`),
-        Component: BrowseTasks,
+        element: (
+          <PrivateRoutes>
+            <TaskDetails></TaskDetails>
+          </PrivateRoutes>
+        ),
         hydrateFallbackElement: <Loading></Loading>,
       },
       {
