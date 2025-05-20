@@ -4,8 +4,6 @@ import { useLoaderData } from "react-router";
 const TaskDetails = () => {
   const task = useLoaderData();
 
-  console.log(task);
-
   return (
     <div className="max-w-6xl mx-auto pt-30 pb-10 px-3 lg:px-0">
       <div className="bg-gradient-to-r from-blue-50 to-purple-100 p-8 rounded-2xl shadow-xl border border-gray-200">
@@ -50,7 +48,7 @@ const TaskDetails = () => {
           </p>
         </div>
 
-        <button onClick={handleBid} className="btn btn-primary mt-5 w-full">Bid Now</button>
+        <button  className="btn btn-primary mt-5 w-full">Bid Now</button>
       </div>
     </div>
   );

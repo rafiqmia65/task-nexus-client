@@ -37,7 +37,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "task/:id",
-        loader: ({params}) => fetch(`http://localhost:3000/allTasks/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/allTasks/${params.id}`),
         element: (
           <PrivateRoutes>
             <TaskDetails></TaskDetails>
@@ -47,11 +48,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "myPostedTasks",
+        loader: () => fetch("http://localhost:3000/allTasks"),
         element: (
           <PrivateRoutes>
             <MyPostedTasks></MyPostedTasks>
           </PrivateRoutes>
         ),
+        hydrateFallbackElement: <Loading></Loading>,
       },
       {
         path: "register",
