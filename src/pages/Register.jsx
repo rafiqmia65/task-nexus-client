@@ -1,5 +1,5 @@
 import React, { use, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import Swal from "sweetalert2";
 
@@ -7,6 +7,7 @@ const Register = () => {
   const { user, setUser, createUser, updateUser, googleSignUp } =
     use(AuthContext);
   const [errorText, setErrorText] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -46,6 +47,7 @@ const Register = () => {
           text: "You clicked the button!",
           icon: "success",
         });
+        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -63,11 +65,15 @@ const Register = () => {
       .then((result) => {
         const newUser = result.user;
         console.log(newUser);
+
+        setUser(newUser);
+
         Swal.fire({
           title: `${newUser.displayName}'s your account successfully created`,
           text: "You clicked the button!",
           icon: "success",
         });
+        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;
