@@ -50,7 +50,7 @@ const TaskDetails = () => {
           </p>
         </div>
 
-        <button className="btn btn-primary mt-5 w-full">Bid Now</button>
+        <button onClick={handleBid} className="btn btn-primary mt-5 w-full">Bid Now</button>
       </div>
     </div>
   );
