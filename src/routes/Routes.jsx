@@ -5,6 +5,8 @@ import AddTask from "../pages/AddTask";
 import BrowseTasks from "../pages/BrowseTasks";
 import MyPostedTasks from "../pages/MyPostedTasks";
 import ErrorPage from "../pages/ErrorPage";
+import Register from "../pages/Register";
+import Login from "../pages/Login";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ export const router = createBrowserRouter([
       {
         path: "myPostedTasks",
         element: <MyPostedTasks></MyPostedTasks>,
+      },
+      {
+        path: "register",
+        Component: Register,
+      },
+      {
+        path: "login",
+        Component: Login,
       },
     ],
   },

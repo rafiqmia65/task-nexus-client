@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/TaskNexus.png";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const links = (
@@ -62,8 +62,8 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <div className="flex gap-3">
-            <a className="btn">Login</a>
-            <a className="btn">Register</a>
+            <NavLink to={"/login"} className="btn">Login</NavLink>
+            <NavLink to={"/register"} className="btn">Register</NavLink>
           </div>
         </div>
       </div>
