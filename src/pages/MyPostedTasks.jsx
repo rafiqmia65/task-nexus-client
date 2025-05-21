@@ -1,14 +1,16 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import { Link, useLoaderData } from "react-router";
 import Swal from "sweetalert2";
 
 const MyPostedTasks = () => {
-  const { user } = use(AuthContext);
+  const { user } = useContext(AuthContext);
   const allTasks = useLoaderData();
   const { displayName, email } = user;
 
   const [myTasks, setMyTasks] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [bidsList, setBidsList] = useState([]);
 
   useEffect(() => {
     const filterTasks = allTasks.filter(
@@ -34,84 +36,132 @@ const MyPostedTasks = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success",
-              });
-
-              const remainingTasks = myTasks.filter((task) => task._id !== id);
-              setMyTasks(remainingTasks);
+              Swal.fire("Deleted!", "Your task has been deleted.", "success");
+              const remaining = myTasks.filter((task) => task._id !== id);
+              setMyTasks(remaining);
             }
           });
       }
     });
   };
+
+  const handleViewBids = (id) => {
+    fetch(`http://localhost:3000/bids/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBidsList(data);
+        setShowModal(true);
+      });
+  };
+
   return (
-    <div>
-      <div className="container mx-auto px-3 lg:px-0 pt-30 pb-10">
-        {myTasks.length === 0 && (
-          <div className="text-center py-10 bg-gray-50 border border-dashed border-gray-300 rounded-lg mt-6">
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">
-              No Tasks Found
-            </h3>
-            <p className="text-gray-500">
-              You haven't posted any tasks yet. Start by creating a new one!
-            </p>
-            <Link to="/addTask">
-              <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm">
-                Post a Task
-              </button>
-            </Link>
-          </div>
-        )}
-
-        <h2 className="text-3xl font-bold mb-6 text-center">My Posted Tasks {myTasks.length}</h2>
-
-        <div className="overflow-x-auto ">
-          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-            <thead className="bg-gray-100 text-gray-700">
-              <tr>
-                <th className="py-3 px-5 text-left">Title</th>
-                <th className="py-3 px-5 text-left">Category</th>
-                <th className="py-3 px-5 text-left">Budget</th>
-                <th className="py-3 px-5 text-left">Deadline</th>
-                <th className="py-3 px-5 text-left">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {myTasks.map((task) => (
-                <tr key={task._id} className="border-b hover:bg-gray-50">
-                  <td className="py-3 px-5">{task.title}</td>
-                  <td className="py-3 px-5">{task.category}</td>
-                  <td className="py-3 px-5">${task.budget}</td>
-                  <td className="py-3 px-5">{task.deadline} days</td>
-                  <td className="py-3 px-5">
-                    <div className="flex flex-wrap gap-2">
-                      <Link to={`/updateTask/${task._id}`}>
-                        <button className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-sm">
-                          Update
-                        </button>
-                      </Link>
-                      <button
-                        onClick={() => handleDelete(task._id)}
-                        className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm"
-                      >
-                        Delete
-                      </button>
-                      <Link to={`/bids/${task._id}`}>
-                        <button className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-md text-sm">
-                          Bids
-                        </button>
-                      </Link>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <div className="container mx-auto px-4 pt-30 py-10">
+      {myTasks.length === 0 ? (
+        <div className="text-center py-10 bg-gray-100 border border-dashed rounded-lg">
+          <h3 className="text-xl font-semibold mb-2">No Tasks Found</h3>
+          <p className="text-gray-500">
+            You haven't posted any tasks yet. Start by creating one!
+          </p>
+          <Link to="/addTask">
+            <button className="mt-4 btn btn-primary">Post a Task</button>
+          </Link>
         </div>
-      </div>
+      ) : (
+        <>
+          <h2 className="text-3xl font-bold text-center mb-6">
+            My Posted Tasks ({myTasks.length})
+          </h2>
+
+          <div className="overflow-x-auto">
+            <table className="table w-full bg-white shadow-md rounded-lg">
+              <thead className="bg-base-200">
+                <tr>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Budget</th>
+                  <th>Deadline</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {myTasks.map((task) => (
+                  <tr key={task._id}>
+                    <td>{task.title}</td>
+                    <td>{task.category}</td>
+                    <td>${task.budget}</td>
+                    <td>{task.deadline} days</td>
+                    <td>
+                      <div className="flex flex-wrap gap-2">
+                        <Link to={`/updateTask/${task._id}`}>
+                          <button className="btn btn-sm btn-info">
+                            Update
+                          </button>
+                        </Link>
+                        <button
+                          onClick={() => handleDelete(task._id)}
+                          className="btn btn-sm btn-error"
+                        >
+                          Delete
+                        </button>
+                        <button
+                          onClick={() => handleViewBids(task._id)}
+                          className="btn btn-sm btn-success"
+                        >
+                          View Bids
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+
+      {/* Modal at the end */}
+      {showModal && (
+        <dialog id="bids_modal" className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Bids List {bidsList.length}</h3>
+            {bidsList.length > 0 ? (
+              <ul className="space-y-2 max-h-60 overflow-y-auto mt-4">
+                {bidsList.map((bid, idx) => (
+                  <li key={idx} className="border-b pb-2">
+                    <p>
+                      <span className="font-semibold">Name:</span>{" "}
+                      {bid.bidderName}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Email:</span>{" "}
+                      {bid.bidderEmail}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Bid Time:</span>{" "}
+                      {new Date(bid.bidTime).toLocaleString()}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-4">No bids yet.</p>
+            )}
+            <div className="modal-action">
+              <form method="dialog">
+                <button
+                  className="btn"
+                  onClick={() => {
+                    setShowModal(false);
+                    setBidsList([]);
+                  }}
+                >
+                  Close
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+      )}
     </div>
   );
 };
