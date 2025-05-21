@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import { Link, useLoaderData } from "react-router";
+import Swal from "sweetalert2";
 
 const MyPostedTasks = () => {
   const { user } = use(AuthContext);
@@ -16,6 +17,36 @@ const MyPostedTasks = () => {
     setMyTasks(filterTasks);
   }, [allTasks, displayName, email]);
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/allTasks/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+
+              const remainingTasks = myTasks.filter((task) => task._id !== id);
+              setMyTasks(remainingTasks);
+            }
+          });
+      }
+    });
+  };
   return (
     <div>
       <div className="container mx-auto px-3 lg:px-0 pt-30 pb-10">
@@ -35,7 +66,7 @@ const MyPostedTasks = () => {
           </div>
         )}
 
-        <h2 className="text-3xl font-bold mb-6 text-center">My Posted Tasks</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center">My Posted Tasks {myTasks.length}</h2>
 
         <div className="overflow-x-auto ">
           <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
@@ -63,7 +94,7 @@ const MyPostedTasks = () => {
                         </button>
                       </Link>
                       <button
-                        // onClick={() => handleDelete(task._id)}
+                        onClick={() => handleDelete(task._id)}
                         className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-sm"
                       >
                         Delete
