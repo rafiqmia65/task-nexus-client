@@ -16,8 +16,6 @@ const MyPostedTasks = () => {
     setMyTasks(filterTasks);
   }, [allTasks, displayName, email]);
 
-  console.log(myTasks);
-
   return (
     <div>
       <div className="container mx-auto px-3 lg:px-0 pt-30 pb-10">
