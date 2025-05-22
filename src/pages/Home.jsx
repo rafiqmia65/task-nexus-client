@@ -6,9 +6,7 @@ import { useLoaderData } from "react-router";
 import RecentTasks from "../components/RecentTasks/RecentTasks";
 
 const Home = () => {
-
   const latestTasks = useLoaderData();
-
 
   return (
     <div className="">

@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-a.active{
-    color: #1ba6e2;
+a.active {
+  color: #1ba6e2;
+}
+.loginSignUP a.active {
+  color: #fff;
 }

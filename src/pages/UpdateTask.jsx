@@ -11,7 +11,7 @@ const UpdateTask = () => {
     const formData = new FormData(form);
     const updateData = Object.fromEntries(formData.entries());
 
-    fetch(`http://localhost:3000/allTasks/${updateTask._id}`, {
+    fetch(`https://task-nexus-server.vercel.app/allTasks/${updateTask._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -42,42 +42,57 @@ const UpdateTask = () => {
 
   return (
     <div className="pt-30 pb-10">
-      <div className="max-w-4xl py-10 mx-auto px-3 lg:px-0 bg-white rounded shadow">
+      <div className="container mx-auto px-3 lg:px-0">
         <h2 className="text-3xl font-semibold text-center mb-6">Update Task</h2>
-        <form onSubmit={handleUpdate} className="space-y-4 px-10">
+        <form
+          onSubmit={handleUpdate}
+          className="space-y-4 md:max-w-lg mx-auto  p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-default"
+        >
           <label className="label">Task Title</label>
           <input
             type="text"
             name="title"
             defaultValue={updateTask.title}
             placeholder="Task Title"
-            className="w-full input"
+            className=" border py-2 rounded indent-3 w-full"
             required
           />
           <label className="label">Select Category</label>
           <select
             name="category"
             defaultValue={updateTask.category}
-            className="select select-bordered w-full"
+            className=" border py-2 rounded indent-3 w-full"
             placeholder="Select Category"
             required
           >
             <option value="Select Category" disabled>
               Select Category
             </option>
-            <option value="Web Development">Web Development</option>
-            <option value="Graphic Design">Graphic Design</option>
-            <option value="Writing">Writing</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Ui/Ux Design">Ui/Ux Design</option>
-            <option value="React Developer">React Developer</option>
+            <option value="Web Development" className="text-gray-900">
+              Web Development
+            </option>
+            <option value="Graphic Design" className="text-gray-900">
+              Graphic Design
+            </option>
+            <option value="Writing" className="text-gray-900">
+              Writing
+            </option>
+            <option value="Marketing" className="text-gray-900">
+              Marketing
+            </option>
+            <option value="Ui/Ux Design" className="text-gray-900">
+              Ui/Ux Design
+            </option>
+            <option value="React Developer" className="text-gray-900">
+              React Developer
+            </option>
           </select>
           <label className="label">Description</label>
           <textarea
             name="description"
             defaultValue={updateTask.description}
             placeholder="Description"
-            className="textarea textarea-bordered w-full"
+            className=" border py-2 rounded indent-3 w-full"
             rows={4}
             required
           ></textarea>
@@ -86,7 +101,7 @@ const UpdateTask = () => {
             type="text"
             defaultValue={updateTask.deadline}
             name="deadline"
-            className="input input-bordered w-full"
+            className=" border py-2 rounded indent-3 w-full"
             required
           />
           <label className="label">Budget</label>
@@ -95,7 +110,7 @@ const UpdateTask = () => {
             name="budget"
             defaultValue={updateTask.budget}
             placeholder="Budget"
-            className="input input-bordered w-full"
+            className=" border py-2 rounded indent-3 w-full"
             required
           />
           <label className="label">Name</label>
@@ -103,7 +118,7 @@ const UpdateTask = () => {
             type="text"
             name="userName"
             value={updateTask.userName}
-            className="input input-bordered w-full bg-gray-100"
+            className=" border  py-2 rounded indent-3 w-full"
             readOnly
           />
           <label className="label">Email</label>
@@ -111,7 +126,7 @@ const UpdateTask = () => {
             type="text"
             name="userEmail"
             value={updateTask.userEmail}
-            className="input input-bordered w-full bg-gray-100"
+            className=" border py-2 rounded indent-3 w-full"
             readOnly
           />
           <button

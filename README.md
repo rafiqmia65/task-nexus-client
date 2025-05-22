@@ -1,12 +1,52 @@
-# React + Vite
+# Task Nexus
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Task Nexus is a modern task posting and bidding platform designed to connect clients with freelancers. Users can post tasks, set budgets, and receive bids from interested freelancers — all through a clean, responsive interface.
 
-Currently, two official plugins are available:
+### 🔗 Live Site:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[https://task-nexus-client.vercel.app](https://task-nexus-client.vercel.app)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Features
+
+- ✅ **User Authentication**  
+  Email/password and Google sign-in support using Firebase Authentication.
+
+- 📝 **Task Posting**  
+  Users can create tasks with details like category, budget, deadline, and description.
+
+- 👨‍💻 **Freelancer Bidding System**  
+  Freelancers can place bids on available tasks, view details, and make offers.
+
+- 🎯 **My Posted Tasks Management**  
+  Task posters can view, update, delete, or see bids on their posted tasks.
+
+- 🌗 **Dark/Light Mode Support**  
+  Seamless theme switching using `data-theme` for optimal accessibility and user experience.
+
+- ⚡ **Real-time Alerts**  
+  SweetAlert2 is used for clean and informative feedback on actions like task addition or deletion.
+
+- 📱 **Responsive Design**  
+  Fully mobile-friendly interface powered by Tailwind CSS and DaisyUI.
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React 19, Tailwind CSS 4, DaisyUI
+- **Authentication:** Firebase
+- **Routing:** React Router v7
+- **UI Components:** SweetAlert2, React Icons, React Slick
+
+---
+
+## 📂 Project Structure
+
+- `/src/pages` – Contains all main views like Home, AddTask, MyPostedTasks
+- `/src/components` – Reusable UI components
+- `/src/provider` – Auth context provider
+- `/src/assets` – Static assets and styles
+
+---

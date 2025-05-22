@@ -4,10 +4,10 @@ const RecentTasks = ({ featuredTasks }) => {
   return (
     <div className="my-10 container mx-auto px-3 lg:px-0">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-800">
+        <h2 className="text-3xl font-bold">
           Recently Posted Tasks with Upcoming Deadlines
         </h2>
-        <p className="text-gray-500 mt-2">
+        <p className="">
           Explore the most urgent tasks and grab the opportunity to bid now!
         </p>
       </div>
@@ -15,22 +15,18 @@ const RecentTasks = ({ featuredTasks }) => {
         {featuredTasks.map((task) => (
           <div
             key={task._id}
-            className="p-6 bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-200 hover:border-blue-400"
+            className="p-6 rounded-lg border border-white shadow-md hover:shadow-lg transition cursor-default"
           >
-            <h3 className="text-xl font-semibold text-blue-600 mb-2">
-              {task.title}
-            </h3>
-            <p className="text-gray-700 mb-1">
-              <span className="font-medium text-gray-900">Category:</span>{" "}
-              {task.category}
+            <h3 className="text-xl font-semibold mb-2">{task.title}</h3>
+            <p className=" mb-1">
+              <span className="font-medium">Category:</span> {task.category}
             </p>
-            <p className="text-gray-700 mb-1">
-              <span className="font-medium text-gray-900">Budget:</span> $
-              {task.budget}
+            <p className=" mb-1">
+              <span className="font-medium">Budget:</span> ${task.budget}
             </p>
-            <p className="text-gray-700">
-              <span className="font-medium text-gray-900">Deadline:</span>{" "}
-              {task.deadline} days
+            <p className="">
+              <span className="font-medium">Deadline:</span> {task.deadline}{" "}
+              days
             </p>
           </div>
         ))}

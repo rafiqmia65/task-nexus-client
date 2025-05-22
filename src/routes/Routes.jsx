@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("http://localhost:3000/latestTasks"),
+        loader: () => fetch("https://task-nexus-server.vercel.app/latestTasks"),
         Component: Home,
         hydrateFallbackElement: <Loading></Loading>,
       },
@@ -34,14 +34,14 @@ export const router = createBrowserRouter([
       },
       {
         path: "BrowseTasks",
-        loader: () => fetch("http://localhost:3000/allTasks"),
+        loader: () => fetch("https://task-nexus-server.vercel.app/allTasks"),
         Component: BrowseTasks,
         hydrateFallbackElement: <Loading></Loading>,
       },
       {
         path: "task/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/allTasks/${params.id}`),
+          fetch(`https://task-nexus-server.vercel.app/allTasks/${params.id}`),
         element: (
           <PrivateRoutes>
             <TaskDetails></TaskDetails>
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
       {
         path: "updateTask/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/allTasks/${params.id}`),
+          fetch(`https://task-nexus-server.vercel.app/allTasks/${params.id}`),
         element: (
           <PrivateRoutes>
             <UpdateTask></UpdateTask>
@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "myPostedTasks",
-        loader: () => fetch("http://localhost:3000/allTasks"),
+        loader: () => fetch("https://task-nexus-server.vercel.app/allTasks"),
         element: (
           <PrivateRoutes>
             <MyPostedTasks></MyPostedTasks>

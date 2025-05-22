@@ -4,8 +4,7 @@ import { AuthContext } from "../provider/AuthContext";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { user, setUser, createUser, updateUser, googleSignUp } =
-    use(AuthContext);
+  const { setUser, createUser, updateUser, googleSignUp } = use(AuthContext);
   const [errorText, setErrorText] = useState("");
   const navigate = useNavigate();
 
@@ -35,11 +34,11 @@ const Register = () => {
 
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
-            setUser({ ...user, displayName: name, photoURL: photo });
+            setUser({ ...newUser, displayName: name, photoURL: photo });
           })
           .catch((error) => {
             setErrorText(error.message);
-            setUser(user);
+            setUser(newUser);
           });
 
         Swal.fire({
@@ -64,16 +63,15 @@ const Register = () => {
     googleSignUp()
       .then((result) => {
         const newUser = result.user;
-        console.log(newUser);
-
-        setUser(newUser);
 
         Swal.fire({
-          title: `${newUser.displayName}'s your account successfully created`,
+          title: `${newUser.displayName}'s your are successfully Logged In`,
           text: "You clicked the button!",
           icon: "success",
         });
-        navigate("/");
+
+        setUser(newUser);
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -87,8 +85,8 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen pt-30 pb-10 bg-gray-100 flex items-center justify-center p-6">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-lg">
+    <div className="min-h-screen pt-30 pb-10  flex items-center justify-center p-6">
+      <div className=" p-8 rounded shadow-md w-full max-w-lg">
         <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
         <form onSubmit={handleRegister} className="space-y-4">
           <label className="label">Name</label>
@@ -145,7 +143,7 @@ const Register = () => {
           <p className="mb-2 text-gray-600">Or SignUp With</p>
           <button
             onClick={handleGoogleSignUp}
-            className="w-full flex justify-center items-center gap-2 border px-4 py-2 rounded hover:bg-gray-100 transition"
+            className="w-full flex justify-center items-center gap-2 border px-4 py-2 rounded transition cursor-pointer"
           >
             <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"

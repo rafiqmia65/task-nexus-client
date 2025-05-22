@@ -11,21 +11,19 @@ const BrowseTasks = () => {
         {allTasks.map((task) => (
           <div
             key={task._id}
-            className="bg-white shadow-md rounded-xl p-5 border border-gray-200 hover:shadow-lg transition duration-300"
+            className=" shadow-md rounded-xl p-5 border border-gray-200 hover:shadow-lg transition duration-300"
           >
             <h3 className="text-xl font-semibold mb-2">{task.title}</h3>
-            <p className="text-sm text-gray-600 mb-1">
+            <p className="text-sm mb-1">
               <strong>Category:</strong> {task.category}
             </p>
-            <p className="text-sm text-gray-600 mb-1">
+            <p className="text-sm  mb-1">
               <strong>Budget:</strong> ${task.budget}
             </p>
-            <p className="text-sm text-gray-600 mb-1">
+            <p className="text-sm  mb-1">
               <strong>Deadline:</strong> {task.deadline} days
             </p>
-            <p className="text-sm text-gray-600 mb-3">
-              {task.description?.slice(0, 80)}...
-            </p>
+            <p className="text-sm  mb-3">{task.description?.slice(0, 80)}...</p>
 
             <Link to={`/task/${task._id}`}>
               <button className="btn btn-sm btn-primary w-full">

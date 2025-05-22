@@ -17,19 +17,19 @@ const steps = [
 ];
 
 const HowItWorks = () => (
-  <section className="bg-white py-16 px-6">
+  <section className=" py-16 px-6">
     <div className="container px-3 lg:px-0 mx-auto text-center">
       <h2 className="text-3xl font-bold mb-12">How TaskNexus Works</h2>
       <div className="grid md:grid-cols-3 gap-8">
         {steps.map(({ title, description }, idx) => (
           <div
             key={idx}
-            className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-default"
+            className="border border-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-default"
           >
             <h3 className="text-2xl font-semibold mb-4">
               {`${idx + 1}. ${title}`}
             </h3>
-            <p className="text-gray-700 leading-relaxed">{description}</p>
+            <p className="leading-relaxed">{description}</p>
           </div>
         ))}
       </div>

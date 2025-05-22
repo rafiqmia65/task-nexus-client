@@ -30,7 +30,7 @@ const MyPostedTasks = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/allTasks/${id}`, {
+        fetch(`https://task-nexus-server.vercel.app/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -46,7 +46,7 @@ const MyPostedTasks = () => {
   };
 
   const handleViewBids = (id) => {
-    fetch(`http://localhost:3000/bids/${id}`)
+    fetch(`https://task-nexus-server.vercel.app/bids/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBidsList(data);
@@ -57,9 +57,9 @@ const MyPostedTasks = () => {
   return (
     <div className="container mx-auto px-4 pt-30 py-10">
       {myTasks.length === 0 ? (
-        <div className="text-center py-10 bg-gray-100 border border-dashed rounded-lg">
+        <div className="text-center py-10  border border-dashed rounded-lg">
           <h3 className="text-xl font-semibold mb-2">No Tasks Found</h3>
-          <p className="text-gray-500">
+          <p className="">
             You haven't posted any tasks yet. Start by creating one!
           </p>
           <Link to="/addTask">
@@ -73,7 +73,7 @@ const MyPostedTasks = () => {
           </h2>
 
           <div className="overflow-x-auto">
-            <table className="table w-full bg-white shadow-md rounded-lg">
+            <table className="table w-full shadow-md rounded-lg">
               <thead className="bg-base-200">
                 <tr>
                   <th>Title</th>

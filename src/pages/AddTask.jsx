@@ -13,7 +13,7 @@ const AddTask = () => {
     const formData = new FormData(form);
     const tasksData = Object.fromEntries(formData.entries());
 
-    fetch("http://localhost:3000/allTasks", {
+    fetch("https://task-nexus-server.vercel.app", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,38 +53,50 @@ const AddTask = () => {
         <h2 className="text-2xl font-bold mb-5 text-center">Add New Task</h2>
         <form
           onSubmit={handleAddTask}
-          className="space-y-4 md:max-w-lg mx-auto bg-white shadow-md p-10 rounded"
+          className="space-y-4 md:max-w-lg mx-auto p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-default"
         >
           <label className="label">Task Title</label>
           <input
             type="text"
             name="title"
             placeholder="Task Title"
-            className="input input-bordered w-full"
+            className=" border py-2 rounded indent-3 w-full"
             required
           />
           <label className="label">Select Category</label>
           <select
             name="category"
-            className="select select-bordered w-full"
+            className=" border py-2 rounded indent-3 w-full"
             placeholder="Select Category"
             required
           >
             <option value="Select Category" disabled>
               Select Category
             </option>
-            <option value="Web Development">Web Development</option>
-            <option value="Graphic Design">Graphic Design</option>
-            <option value="Writing">Writing</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Ui/Ux Design">Ui/Ux Design</option>
-            <option value="React Developer">React Developer</option>
+            <option value="Web Development" className="text-gray-900">
+              Web Development
+            </option>
+            <option value="Graphic Design" className="text-gray-900">
+              Graphic Design
+            </option>
+            <option value="Writing" className="text-gray-900">
+              Writing
+            </option>
+            <option value="Marketing" className="text-gray-900">
+              Marketing
+            </option>
+            <option value="Ui/Ux Design" className="text-gray-900">
+              Ui/Ux Design
+            </option>
+            <option value="React Developer" className="text-gray-900">
+              React Developer
+            </option>
           </select>
           <label className="label">Description</label>
           <textarea
             name="description"
             placeholder="Description"
-            className="textarea textarea-bordered w-full"
+            className=" border py-2 rounded indent-3 w-full"
             rows={4}
             required
           ></textarea>
@@ -92,7 +104,7 @@ const AddTask = () => {
           <input
             type="text"
             name="deadline"
-            className="input input-bordered w-full"
+            className=" border py-2 rounded indent-3 w-full"
             required
           />
           <label className="label">Budget</label>
@@ -100,7 +112,7 @@ const AddTask = () => {
             type="text"
             name="budget"
             placeholder="Budget"
-            className="input input-bordered w-full"
+            className=" border py-2 rounded indent-3 w-full"
             required
           />
           <label className="label">Name</label>
@@ -108,7 +120,7 @@ const AddTask = () => {
             type="text"
             name="userName"
             value={user?.displayName}
-            className="input input-bordered w-full bg-gray-100"
+            className=" border py-2 rounded indent-3 w-full"
             readOnly
           />
 
@@ -117,7 +129,7 @@ const AddTask = () => {
             type="text"
             name="userEmail"
             value={user?.email}
-            className="input input-bordered w-full bg-gray-100"
+            className=" border py-2 rounded indent-3 w-full"
             readOnly
           />
 

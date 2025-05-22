@@ -1,12 +1,14 @@
-import React, { use } from "react";
+import React from "react";
 import logo from "../../assets/TaskNexus.png";
-import { Link, NavLink, useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../provider/AuthContext";
 import Swal from "sweetalert2";
 import { Typewriter } from "react-simple-typewriter";
+import { useContext } from "react";
+import DarkLightMode from "../DarkLightMode/DarkLightMode";
 
 const Navbar = () => {
-  const { user, logOut } = use(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -14,7 +16,7 @@ const Navbar = () => {
     logOut()
       .then(() => {
         Swal.fire({
-          title: `Your are successfully Log Out`,
+          title: "Your are successfully Log Out",
           text: "You clicked the button!",
           icon: "success",
         });
@@ -93,13 +95,23 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
+          <div className="mx-2">
+            <DarkLightMode></DarkLightMode>
+          </div>
+
           {user ? (
             <div className="relative group">
-              <img
-                src={user.photoURL}
-                alt="User"
-                className="w-10 h-10 rounded-full ring cursor-pointer"
-              />
+              {user?.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt="User"
+                  className="w-10 h-10 rounded-full ring cursor-pointer"
+                />
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
+                  ?
+                </div>
+              )}
               <div className="absolute text-center right-0 -mt-1 hidden  rounded-lg bg-white p-4  shadow-lg group-hover:block z-50 gap-3">
                 <div className="text-left">
                   <p className="font-semibold capitalize text-gray-800">
@@ -109,18 +121,18 @@ const Navbar = () => {
                 </div>
                 <button
                   onClick={handleLogOut}
-                  className="btn btn-info mt-2 w-full text-white"
+                  className="btn btn-info mt-2 w-full  text-white"
                 >
                   LogOut
                 </button>
               </div>
             </div>
           ) : (
-            <div className="flex gap-3">
-              <NavLink to={"/login"} className="btn">
+            <div className="flex gap-3 loginSignUP">
+              <NavLink to={"/login"} className="btn btn-primary">
                 Login
               </NavLink>
-              <NavLink to={"/register"} className="btn">
+              <NavLink to={"/register"} className="btn btn-info">
                 Register
               </NavLink>
             </div>
