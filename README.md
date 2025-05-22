@@ -1,52 +1,58 @@
-# Task Nexus
+# 🚧 Task Nexus
 
-Task Nexus is a modern task posting and bidding platform designed to connect clients with freelancers. Users can post tasks, set budgets, and receive bids from interested freelancers — all through a clean, responsive interface.
+**Task Nexus** is a modern task posting and bidding platform that connects clients with freelancers. Users can post tasks, set budgets and deadlines, and receive bids from freelancers — all within a sleek, responsive interface.
 
-### 🔗 Live Site:
+### 🔗 Live Site
 
-[https://task-nexus-client.vercel.app](https://task-nexus-client.vercel.app)
+👉 (https://rafiqmia-tasknexus.netlify.app/)
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
 - ✅ **User Authentication**  
-  Email/password and Google sign-in support using Firebase Authentication.
+  Secure login via **Email/Password** and **Google Sign-in** using Firebase Authentication.
 
 - 📝 **Task Posting**  
-  Users can create tasks with details like category, budget, deadline, and description.
+  Users can create tasks with detailed inputs including **category**, **budget**, **deadline**, and **description**.
 
-- 👨‍💻 **Freelancer Bidding System**  
-  Freelancers can place bids on available tasks, view details, and make offers.
+- 🛠️ **Freelancer Bidding System**  
+  Freelancers can place bids on available tasks and submit offers with relevant information.
 
-- 🎯 **My Posted Tasks Management**  
-  Task posters can view, update, delete, or see bids on their posted tasks.
+- 📋 **Task Management Dashboard**  
+  Task posters can **view**, **update**, **delete**, and **track bids** for their posted tasks.
 
-- 🌗 **Dark/Light Mode Support**  
-  Seamless theme switching using `data-theme` for optimal accessibility and user experience.
+- 🌗 **Dark & Light Mode**  
+  Built-in theme switching using `data-theme` for a smooth user experience across lighting preferences.
 
-- ⚡ **Real-time Alerts**  
-  SweetAlert2 is used for clean and informative feedback on actions like task addition or deletion.
+- ⚡ **Interactive Alerts**  
+  Real-time feedback for user actions using **SweetAlert2** modals.
 
-- 📱 **Responsive Design**  
-  Fully mobile-friendly interface powered by Tailwind CSS and DaisyUI.
+- 📱 **Fully Responsive**  
+  Mobile-friendly design powered by **Tailwind CSS** and **DaisyUI**.
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Frontend:** React 19, Tailwind CSS 4, DaisyUI
-- **Authentication:** Firebase
+- **Frontend:** React 19
+- **Styling:** Tailwind CSS 4, DaisyUI
 - **Routing:** React Router v7
-- **UI Components:** SweetAlert2, React Icons, React Slick
+- **Authentication:** Firebase
+- **UI Tools:** SweetAlert2, React Icons, React Slick
 
 ---
 
-## 📂 Project Structure
+## 📁 Project Structure
 
-- `/src/pages` – Contains all main views like Home, AddTask, MyPostedTasks
-- `/src/components` – Reusable UI components
-- `/src/provider` – Auth context provider
-- `/src/assets` – Static assets and styles
+```
+src/
+├── assets/        # Static assets (images, icons, styles)
+├── components/    # Reusable UI components (Navbar, Footer, etc.)
+├── pages/         # Page components (Home, AddTask, MyPostedTasks)
+├── provider/      # Authentication context provider
+```
+
+---
 
 ---
