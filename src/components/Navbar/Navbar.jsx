@@ -3,6 +3,7 @@ import logo from "../../assets/TaskNexus.png";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../provider/AuthContext";
 import Swal from "sweetalert2";
+import { Typewriter } from "react-simple-typewriter";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -75,13 +76,18 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="">
-            <img
-              className="w-[150px] cursor-pointer"
-              src={logo}
-              alt="Task Nexus"
-            />
-          </a>
+          <div className="flex items-center gap-2">
+            <img className="w-10 cursor-pointer" src={logo} alt="Task Nexus" />
+            <h2 className="text-2xl font-bold text-[#1e7496]">
+              <Typewriter
+                words={["TaskNexus"]}
+                loop={false}
+                cursor
+                cursorStyle="_"
+                typeSpeed={100}
+              />
+            </h2>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
