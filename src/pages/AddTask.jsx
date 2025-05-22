@@ -13,7 +13,7 @@ const AddTask = () => {
     const formData = new FormData(form);
     const tasksData = Object.fromEntries(formData.entries());
 
-    fetch("https://task-nexus-server.vercel.app", {
+    fetch("https://task-nexus-server.vercel.app/allTasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

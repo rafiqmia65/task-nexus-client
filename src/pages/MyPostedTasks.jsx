@@ -30,7 +30,7 @@ const MyPostedTasks = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://task-nexus-server.vercel.app/${id}`, {
+        fetch(`https://task-nexus-server.vercel.app/allTasks/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
