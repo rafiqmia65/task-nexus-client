@@ -46,6 +46,49 @@ const Navbar = () => {
       <li className="text-lg font-medium">
         <NavLink to={"/myPostedTasks"}>My Posted Tasks</NavLink>
       </li>
+
+      <li className="md:hidden">
+        <div>
+          {user ? (
+            <div className="relative group">
+              {user?.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt="User"
+                  className="w-10 h-10 rounded-full ring cursor-pointer"
+                />
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
+                  ?
+                </div>
+              )}
+              <div className="absolute text-center left-10 -mt-11 hidden  rounded-lg bg-white p-4  shadow-lg group-hover:block z-50 gap-3">
+                <div className="text-left">
+                  <p className="font-semibold capitalize text-gray-800">
+                    {user.displayName}
+                  </p>
+                  <p className="text-gray-600">{user.email}</p>
+                </div>
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-info mt-2 w-full  text-white"
+                >
+                  LogOut
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="flex gap-3 loginSignUP">
+              <NavLink to={"/login"} className="btn btn-primary">
+                Login
+              </NavLink>
+              <NavLink to={"/register"} className="btn btn-info">
+                Register
+              </NavLink>
+            </div>
+          )}
+        </div>
+      </li>
     </>
   );
 
@@ -99,44 +142,46 @@ const Navbar = () => {
             <DarkLightMode></DarkLightMode>
           </div>
 
-          {user ? (
-            <div className="relative group">
-              {user?.photoURL ? (
-                <img
-                  src={user.photoURL}
-                  alt="User"
-                  className="w-10 h-10 rounded-full ring cursor-pointer"
-                />
-              ) : (
-                <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
-                  ?
+          <div className="hidden md:block">
+            {user ? (
+              <div className="relative group">
+                {user?.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt="User"
+                    className="w-10 h-10 rounded-full ring cursor-pointer"
+                  />
+                ) : (
+                  <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
+                    ?
+                  </div>
+                )}
+                <div className="absolute text-center right-0 -mt-1 hidden  rounded-lg bg-white p-4  shadow-lg group-hover:block z-50 gap-3">
+                  <div className="text-left">
+                    <p className="font-semibold capitalize text-gray-800">
+                      {user.displayName}
+                    </p>
+                    <p className="text-gray-600">{user.email}</p>
+                  </div>
+                  <button
+                    onClick={handleLogOut}
+                    className="btn btn-info mt-2 w-full  text-white"
+                  >
+                    LogOut
+                  </button>
                 </div>
-              )}
-              <div className="absolute text-center right-0 -mt-1 hidden  rounded-lg bg-white p-4  shadow-lg group-hover:block z-50 gap-3">
-                <div className="text-left">
-                  <p className="font-semibold capitalize text-gray-800">
-                    {user.displayName}
-                  </p>
-                  <p className="text-gray-600">{user.email}</p>
-                </div>
-                <button
-                  onClick={handleLogOut}
-                  className="btn btn-info mt-2 w-full  text-white"
-                >
-                  LogOut
-                </button>
               </div>
-            </div>
-          ) : (
-            <div className="flex gap-3 loginSignUP">
-              <NavLink to={"/login"} className="btn btn-primary">
-                Login
-              </NavLink>
-              <NavLink to={"/register"} className="btn btn-info">
-                Register
-              </NavLink>
-            </div>
-          )}
+            ) : (
+              <div className="flex gap-3 loginSignUP">
+                <NavLink to={"/login"} className="btn btn-primary">
+                  Login
+                </NavLink>
+                <NavLink to={"/register"} className="btn btn-info">
+                  Register
+                </NavLink>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </nav>
