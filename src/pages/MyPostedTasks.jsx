@@ -55,7 +55,7 @@ const MyPostedTasks = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 pt-30 py-10">
+    <div className="container mx-auto px-4 pt-30 pb-10">
       {myTasks.length === 0 ? (
         <div className="text-center py-10  border border-dashed rounded-lg">
           <h3 className="text-xl font-semibold mb-2">No Tasks Found</h3>

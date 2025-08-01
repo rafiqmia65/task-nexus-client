@@ -37,14 +37,25 @@ const Navbar = () => {
       <li className="text-lg font-medium">
         <NavLink to={"/"}>Home</NavLink>
       </li>
-      <li className="text-lg font-medium">
-        <NavLink to={"/addTask"}>Add Task</NavLink>
-      </li>
+
       <li className="text-lg font-medium">
         <NavLink to={"/BrowseTasks"}>Browse Tasks</NavLink>
       </li>
       <li className="text-lg font-medium">
-        <NavLink to={"/myPostedTasks"}>My Posted Tasks</NavLink>
+        <NavLink to={"/dashboard"}>Dashboard</NavLink>
+      </li>
+      {user && (
+        <>
+          <li className="text-lg font-medium">
+            <NavLink to={"/myPostedTasks"}>My Posted Tasks</NavLink>
+          </li>
+          <li className="text-lg font-medium">
+            <NavLink to={"/addTask"}>Add Task</NavLink>
+          </li>
+        </>
+      )}
+      <li className="text-lg font-medium">
+        <NavLink to={"/contact"}>Contact</NavLink>
       </li>
 
       <li className="md:hidden">

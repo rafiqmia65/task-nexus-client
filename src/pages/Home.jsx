@@ -4,6 +4,7 @@ import Testimonials from "../components/Testimonials/Testimonials";
 import HowItWorks from "../components/HowItWorks/HowItWorks";
 import { useLoaderData } from "react-router";
 import RecentTasks from "../components/RecentTasks/RecentTasks";
+import TaskNexusActivity from "../components/TaskNexusActivity/TaskNexusActivity";
 
 const Home = () => {
   const latestTasks = useLoaderData();
@@ -12,6 +13,7 @@ const Home = () => {
     <div className="">
       <Banner></Banner>
       <RecentTasks featuredTasks={latestTasks}></RecentTasks>
+      <TaskNexusActivity></TaskNexusActivity>
       <Testimonials></Testimonials>
       <HowItWorks></HowItWorks>
     </div>

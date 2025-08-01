@@ -46,10 +46,10 @@ const Banner = () => {
   ];
 
   return (
-    <div className="bg-gray-900">
+    <div className="">
       <Slider {...settings}>
         {slides.map((slide, index) => (
-          <div key={index} className="h-[600px] rounded-lg overflow-hidden">
+          <div key={index} className="h-[70vh] rounded-lg overflow-hidden">
             <div
               className="w-full h-full flex flex-col items-center justify-center text-center bg-cover bg-center text-white"
               style={{
@@ -60,11 +60,11 @@ const Banner = () => {
               }}
             >
               <div className="container px-3 mx-auto lg:px-0">
-                <h2 className="text-4xl font-bold mb-5">{slide.title}</h2>
+                <h2 className="text-2xl lg:text-4xl font-bold mb-5">{slide.title}</h2>
                 {slide.subtitle && (
-                  <p className="text-2xl font-medium mb-5">{slide.subtitle}</p>
+                  <p className="text-lg lg:text-2xl font-medium mb-5">{slide.subtitle}</p>
                 )}
-                <p className="text-lg mb-5">{slide.description}</p>
+                <p className="text-sm lg:text-lg mb-5">{slide.description}</p>
                 {slide.ctaText && (
                   <a className="inline-block px-6 py-2 bg-blue-500 hover:bg-blue-700 rounded-md text-white transition">
                     {slide.ctaText}

@@ -20,7 +20,7 @@ const testimonials = [
 ];
 
 const Testimonials = () => (
-  <section className=" py-16 px-6">
+  <section className=" pt-14 px-6">
     <div className="container px-3 lg:px-0 mx-auto text-center">
       <h2 className="text-3xl font-bold mb-10">What Our Users Say</h2>
       <div className="grid md:grid-cols-3 gap-8">

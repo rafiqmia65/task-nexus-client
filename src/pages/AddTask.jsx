@@ -48,7 +48,7 @@ const AddTask = () => {
   };
 
   return (
-    <div className="pt-30 pb-10">
+    <div className="pb-10 pt-30">
       <div className="container mx-auto px-3 lg:px-0">
         <h2 className="text-2xl font-bold mb-5 text-center">Add New Task</h2>
         <form
