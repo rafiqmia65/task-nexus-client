@@ -51,7 +51,7 @@ const Banner = () => {
         {slides.map((slide, index) => (
           <div key={index} className="h-[70vh] rounded-lg overflow-hidden">
             <div
-              className="w-full h-full flex flex-col items-center justify-center text-center bg-cover bg-center text-white"
+              className="relative w-full h-full flex flex-col items-center justify-center text-center text-white"
               style={{
                 backgroundImage: `url(${slide.image})`,
                 backgroundRepeat: "no-repeat",
@@ -59,10 +59,17 @@ const Banner = () => {
                 backgroundPosition: "center",
               }}
             >
-              <div className="container px-3 mx-auto lg:px-0">
-                <h2 className="text-2xl lg:text-4xl font-bold mb-5">{slide.title}</h2>
+              {/* 🔵 Overlay with opacity */}
+              <div className="absolute inset-0 bg-blue-900/40"></div>{" "}
+              {/* Content goes above the overlay */}
+              <div className="relative container px-3 mx-auto lg:px-0 z-10">
+                <h2 className="text-2xl lg:text-4xl font-bold mb-5">
+                  {slide.title}
+                </h2>
                 {slide.subtitle && (
-                  <p className="text-lg lg:text-2xl font-medium mb-5">{slide.subtitle}</p>
+                  <p className="text-lg lg:text-2xl font-medium mb-5">
+                    {slide.subtitle}
+                  </p>
                 )}
                 <p className="text-sm lg:text-lg mb-5">{slide.description}</p>
                 {slide.ctaText && (
